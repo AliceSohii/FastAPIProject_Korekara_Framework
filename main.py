@@ -1,5 +1,7 @@
 from fastapi import FastAPI
-from .project import om
+from project import om
+
+
 app = FastAPI()
 
 
