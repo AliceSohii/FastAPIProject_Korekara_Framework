@@ -13,7 +13,6 @@ class ObjectManager:
         if value is None:
             raise ValueError("Cannot store a None value.")
         self._objects[key] = value
-
     def get(self, key: str):
         """
         使用字符串精确获取变量。如果失败则返回 KeyError。
