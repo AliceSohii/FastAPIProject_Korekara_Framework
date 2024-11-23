@@ -1,11 +1,11 @@
-from threading import Lock
-from functools import wraps
-import os
-import configparser
-from concurrent.futures import ThreadPoolExecutor, Future, CancelledError, TimeoutError, as_completed
-import threading
-import functools
 import atexit
+import configparser
+import functools
+import os
+import threading
+from concurrent.futures import ThreadPoolExecutor, CancelledError, TimeoutError
+from functools import wraps
+from threading import Lock
 
 # # 配置文件路径
 CONFIG_FILE = os.path.join("config/thread.ini")
@@ -17,7 +17,7 @@ config.read(CONFIG_FILE)
 # 获取配置值
 not_used_cpu_num = int(config['thread']['thread_pool_not_used_cpu_num'])
 used_cpu_percentage = float(config['thread']['thread_pool_used_cpu_percentage'])
-timeout = int(config['thread'].get('timeout', 120))  # 默认超时时间为120秒
+timeout = int(config['thread']['timeout'])
 
 # not_used_cpu_num = 0
 # used_cpu_percentage = 100
@@ -29,7 +29,6 @@ cpu_count = os.cpu_count()
 pool_size_1 = cpu_count - not_used_cpu_num
 pool_size_2 = int(used_cpu_percentage / 100 * cpu_count)
 
-# 选择较大的线程池大小，但不超过cpu数量的若干倍（这里假设不超过100倍作为示例）
 max_multiplier = 100  # 最大倍数，可以根据实际情况调整
 pool_size = max(pool_size_1, pool_size_2)
 if used_cpu_percentage > 100:
@@ -53,17 +52,17 @@ class ThreadPoolManager:
         if self._executor is None:
             self._executor = ThreadPoolExecutor(max_workers=pool_size)
 
-    def submit_task(self, fn, *args, timeout=None, **kwargs):
+    def submit_task(self, fn, *args, _timeout=None, **kwargs):
         """
         提交任务到线程池中，并可选地设置超时时间。
         """
         future = self._executor.submit(fn, *args, **kwargs)
-        if timeout is not None:
+        if _timeout is not None:
             try:
-                result = future.result(timeout=timeout)
+                _result = future.result(timeout=_timeout)
             except TimeoutError:
                 future.cancel()  # 任务超时，尝试取消任务
-                raise TimeoutError(f"任务 {fn.__name__} 超时，执行时间 {timeout} seconds")
+                raise TimeoutError(f"任务 {fn.__name__} 超时，执行时间 {_timeout} seconds")
             except CancelledError:
                 raise CancelledError(f"任务 {fn.__name__} ")
             except Exception as e:
@@ -72,7 +71,7 @@ class ThreadPoolManager:
                 raise e
 
             else:
-                return result
+                return _result
         else:
             return future
 
@@ -90,7 +89,7 @@ class ThreadPoolManager:
         def wrapper(*args, **kwargs):
             # 提交任务到线程池，不阻塞主线程，使用默认超时时间
             try:
-                self.submit_task(fn, *args, **kwargs, timeout=timeout)
+                self.submit_task(fn, *args, **kwargs, _timeout=timeout)
             except (TimeoutError, CancelledError, Exception) as e:
                 print(f"Error executing task {fn.__name__}: {e}")
             return None
