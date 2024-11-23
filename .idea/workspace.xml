@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8aecf856-b57a-4faf-9cbf-50d70ec054de" name="Changes" comment="线程池的建立，以及两个线程化装饰器">
-      <change afterPath="$PROJECT_DIR$/base/cache.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/cache.ini" afterDir="false" />
+    <list default="true" id="8aecf856-b57a-4faf-9cbf-50d70ec054de" name="Changes" comment="昂贵计算缓存器完成，默认1024个">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/project.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/thread.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/thread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/thread.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/thread.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,10 +42,11 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "FastAPI.FastAPIProject.executor": "Run",
-    "Python.cache.executor": "Run",
+    "Python.cache.executor": "Debug",
     "Python.log.executor": "Debug",
     "Python.main.executor": "Debug",
     "Python.object_manager.executor": "Run",
+    "Python.thread.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -66,7 +66,7 @@
       <recent name="C:\Users\29178\PycharmProjects\FastAPIProject" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.cache">
+  <component name="RunManager" selected="Python.thread">
     <configuration name="cache" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FastAPIProject" />
       <option name="ENV_FILES" value="" />
@@ -136,6 +136,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="thread" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FastAPIProject" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/base" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/base/thread.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="FastAPIProject" type="Python.FastAPI">
       <option name="file" value="$PROJECT_DIR$/main.py" />
       <module name="FastAPIProject" />
@@ -153,6 +176,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.thread" />
         <item itemvalue="Python.cache" />
         <item itemvalue="Python.log" />
         <item itemvalue="Python.main" />
@@ -181,7 +205,8 @@
       <workItem from="1732203422004" duration="736000" />
       <workItem from="1732204247966" duration="1355000" />
       <workItem from="1732205706124" duration="2460000" />
-      <workItem from="1732291446305" duration="13067000" />
+      <workItem from="1732291446305" duration="14297000" />
+      <workItem from="1732328889608" duration="2646000" />
     </task>
     <task id="LOCAL-00001" summary="Changes">
       <option name="closed" value="true" />
@@ -215,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732301327185</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="昂贵计算缓存器完成，默认1024个">
+      <option name="closed" value="true" />
+      <created>1732304894741</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732304894742</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,13 +270,15 @@
     <MESSAGE value="log功能完成" />
     <MESSAGE value="requirements.txt添加" />
     <MESSAGE value="线程池的建立，以及两个线程化装饰器" />
-    <option name="LAST_COMMIT_MESSAGE" value="线程池的建立，以及两个线程化装饰器" />
+    <MESSAGE value="昂贵计算缓存器完成，默认1024个" />
+    <option name="LAST_COMMIT_MESSAGE" value="昂贵计算缓存器完成，默认1024个" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FastAPIProject$FastAPIProject.coverage" NAME="FastAPIProject 覆盖结果" MODIFIED="1732301337969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/FastAPIProject$FastAPIProject.coverage" NAME="FastAPIProject 覆盖结果" MODIFIED="1732330945871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/FastAPIProject$log.coverage" NAME="log 覆盖结果" MODIFIED="1732207400750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base" />
+    <SUITE FILE_PATH="coverage/FastAPIProject$thread.coverage" NAME="thread 覆盖结果" MODIFIED="1732331492559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base" />
     <SUITE FILE_PATH="coverage/FastAPIProject$main.coverage" NAME="main 覆盖结果" MODIFIED="1732201721691" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/FastAPIProject$cache.coverage" NAME="cache 覆盖结果" MODIFIED="1732303357052" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base" />
+    <SUITE FILE_PATH="coverage/FastAPIProject$cache.coverage" NAME="cache 覆盖结果" MODIFIED="1732304821457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base" />
     <SUITE FILE_PATH="coverage/FastAPIProject$object_manager.coverage" NAME="object_manager 覆盖结果" MODIFIED="1732199920026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base" />
   </component>
 </project>
