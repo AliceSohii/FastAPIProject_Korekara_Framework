@@ -7,6 +7,7 @@ from concurrent.futures import ThreadPoolExecutor, CancelledError, TimeoutError
 from functools import wraps
 from threading import Lock
 
+from project import logger
 # # 配置文件路径
 CONFIG_FILE = os.path.join("config/thread.ini")
 

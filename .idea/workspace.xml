@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8aecf856-b57a-4faf-9cbf-50d70ec054de" name="Changes" comment="添加线程池超时功能">
-      <change afterPath="$PROJECT_DIR$/base/plugins.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugins/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugins/sample_plugins/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugins/sample_plugins/base/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugins/sample_plugins/serve/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugins/sample_plugins/space.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugins/sample_plugins_1/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugins/sample_plugins_1/base/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugins/sample_plugins_1/serve/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugins/sample_plugins_1/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/29178.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/29178.xml" afterDir="false" />
+    <list default="true" id="8aecf856-b57a-4faf-9cbf-50d70ec054de" name="Changes" comment="框架支持插件">
+      <change afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/base/database/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/base/database/space.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/base/database/table_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/thread.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/thread.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/project.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,30 +43,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;FastAPI.FastAPIProject.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cache.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.log.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.main.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.object_manager.executor&quot;: &quot;Run&quot;,
-    &quot;Python.thread.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/29178/PycharmProjects/FastAPIProject/plugins&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.language.and.region&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "FastAPI.FastAPIProject.executor": "Run",
+    "Python.SimpleDatabaseWithPersistence.executor": "Run",
+    "Python.cache.executor": "Debug",
+    "Python.log.executor": "Debug",
+    "Python.main.executor": "Debug",
+    "Python.object_manager.executor": "Run",
+    "Python.simple_db.executor": "Run",
+    "Python.space.executor": "Run",
+    "Python.thread.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/29178/PycharmProjects/FastAPIProject/plugins",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.language.and.region",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\29178\PycharmProjects\FastAPIProject\plugins" />
@@ -154,6 +152,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="table_db" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FastAPIProject" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/base/database" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\29178\PycharmProjects\FastAPIProject\base\database\table_db.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="thread" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FastAPIProject" />
       <option name="ENV_FILES" value="" />
@@ -194,6 +215,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.table_db" />
         <item itemvalue="Python.thread" />
         <item itemvalue="Python.cache" />
         <item itemvalue="Python.log" />
@@ -226,7 +248,7 @@
       <workItem from="1732291446305" duration="14297000" />
       <workItem from="1732328889608" duration="3639000" />
       <workItem from="1732364205210" duration="8298000" />
-      <workItem from="1732408083912" duration="500000" />
+      <workItem from="1732408083912" duration="6965000" />
     </task>
     <task id="LOCAL-00001" summary="Changes">
       <option name="closed" value="true" />
@@ -284,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732331927621</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="框架支持插件">
+      <option name="closed" value="true" />
+      <created>1732409407985</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732409407985</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,14 +338,17 @@
     <MESSAGE value="线程池的建立，以及两个线程化装饰器" />
     <MESSAGE value="昂贵计算缓存器完成，默认1024个" />
     <MESSAGE value="添加线程池超时功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加线程池超时功能" />
+    <MESSAGE value="框架支持插件" />
+    <option name="LAST_COMMIT_MESSAGE" value="框架支持插件" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FastAPIProject$FastAPIProject.coverage" NAME="FastAPIProject 覆盖结果" MODIFIED="1732371948956" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/FastAPIProject$FastAPIProject.coverage" NAME="FastAPIProject 覆盖结果" MODIFIED="1732415063212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/FastAPIProject$log.coverage" NAME="log 覆盖结果" MODIFIED="1732207400750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base" />
     <SUITE FILE_PATH="coverage/FastAPIProject$thread.coverage" NAME="thread 覆盖结果" MODIFIED="1732331935345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base" />
+    <SUITE FILE_PATH="coverage/FastAPIProject$SimpleDatabaseWithPersistence.coverage" NAME="simple_db 覆盖结果" MODIFIED="1732413536254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base/database" />
     <SUITE FILE_PATH="coverage/FastAPIProject$main.coverage" NAME="main 覆盖结果" MODIFIED="1732201721691" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FastAPIProject$cache.coverage" NAME="cache 覆盖结果" MODIFIED="1732304821457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base" />
     <SUITE FILE_PATH="coverage/FastAPIProject$object_manager.coverage" NAME="object_manager 覆盖结果" MODIFIED="1732199920026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base" />
+    <SUITE FILE_PATH="coverage/FastAPIProject$space.coverage" NAME="space 覆盖结果" MODIFIED="1732413644417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base/database" />
   </component>
 </project>

@@ -1,3 +1,5 @@
+import atexit
+
 from base.object_manager import ObjectManager
 from base.logger import logger
 
@@ -40,4 +42,15 @@ for plugin in plugins_list:
     logger.info(f"  - {plugin_info.name}，版本：{plugin_info.version}")
 
 logger.info("初始化:插件加载完成")
+
+################### 初始化表单数据库 ###################
+logger.info("初始化:表单数据库加载")
+from base.database.space import mt_db
+logger.info("初始化:连接simple_table_01表单数据库")
+mt_db.ensure_table_exists("simple_table_01")
+logger.info("初始化:连接simple_table_02表单数据库")
+mt_db.ensure_table_exists("simple_table_02")
+
+
+
 
