@@ -44,13 +44,22 @@ for plugin in plugins_list:
 logger.info("初始化:插件加载完成")
 
 ################### 初始化表单数据库 ###################
-logger.info("初始化:表单数据库加载")
+logger.info("初始化:多表单数据库")
 from base.database.space import mt_db
 logger.info("初始化:连接simple_table_01表单数据库")
 mt_db.ensure_table_exists("simple_table_01")
+
+mt_db["simple_table_01"].insert("say","nihao")
+mt_db["simple_table_01"].get("say")
+mt_db["simple_table_01"].delete("say")
+logger.info("初始化:连接simple_table_01表单数据库成功")
+
 logger.info("初始化:连接simple_table_02表单数据库")
 mt_db.ensure_table_exists("simple_table_02")
+mt_db["simple_table_02"].insert("say","nihao")
+mt_db["simple_table_02"].get("say")
+mt_db["simple_table_02"].delete("say")
+logger.info("初始化:连接simple_table_02表单数据库成功")
 
-
-
-
+om.store("mt_db",mt_db)
+logger.info("初始化:注册多表单数据库到对象管理器完成")

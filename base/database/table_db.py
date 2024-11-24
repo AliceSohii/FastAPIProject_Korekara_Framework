@@ -36,7 +36,8 @@ class TableDB:
     def insert(self, key, value):
         """
         插入新的键值对到数据库中。
-
+            db.insert('name', 'Alice')
+            db.insert('age', 30)
         :param key: 要插入的键。
         :param value: 与键关联的值。
         """
@@ -47,6 +48,8 @@ class TableDB:
     def get(self, key):
         """
         根据键从数据库中获取值。
+            print(db.get('name'))  # Output: Alice
+            print(db.get('age'))   # Output: 30
 
         :param key: 要获取值的键。
         :return: 与键关联的值，如果键不存在则返回None。
@@ -57,6 +60,8 @@ class TableDB:
     def update(self, key, value):
         """
         更新数据库中指定键的值。
+            db.update('age', 31)
+            print(db.get('age'))   # Output: 31
 
         :param key: 要更新的键。
         :param value: 新的值。
@@ -71,7 +76,8 @@ class TableDB:
     def delete(self, key):
         """
         从数据库中删除指定的键值对。
-
+            db.delete('name')
+            print(db.get('name'))  # Output: None
         :param key: 要删除的键。
         """
         with self.lock:  # 确保线程安全
@@ -147,7 +153,7 @@ class MultiTableDB:
         # 注意：这里不需要额外的逻辑来加载已存在的表，因为当表已经存在时，
         # self.tables[table_name] 已经包含了对应的 TableDB 对象。
 
-    def get_table(self, table_name):
+    def get_table(self, table_name) -> TableDB:
         """
         通过表名获取表对象，如果表不存在则返回None。
 
@@ -156,7 +162,7 @@ class MultiTableDB:
         """
         return self.tables.get(table_name)
 
-    def __getitem__(self, table_name):
+    def __getitem__(self, table_name) -> TableDB:
         """
         通过表名获取表对象（支持字典式访问），如果表不存在则抛出KeyError。
 
