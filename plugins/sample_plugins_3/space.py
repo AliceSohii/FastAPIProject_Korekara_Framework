@@ -3,7 +3,7 @@ from project import logger
 info ={
     "mail" : "test@test.com",
 }
-plugin_info = PluginInfo(name = "sample_plugins_1", version="0.0.1",info = info)
+plugin_info = PluginInfo(name = "sample_plugins_3", version="0.0.3",info = info)
 plugin = Plugin(plugin_info)
 
 logger.info(f"开始初始化插件{plugin_info.name},{plugin_info.version} ")
