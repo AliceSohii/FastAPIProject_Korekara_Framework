@@ -45,7 +45,8 @@ logger.info("初始化:插件加载完成")
 
 ################### 初始化表单数据库 ###################
 logger.info("初始化:多表单数据库")
-from base.database.space import mt_db
+from base.database.space import mt_db, get_sql_base_class, create_all_tables
+
 logger.info("初始化:连接simple_table_01表单数据库")
 mt_db.ensure_table_exists("simple_table_01")
 
@@ -63,3 +64,25 @@ logger.info("初始化:连接simple_table_02表单数据库成功")
 
 om.store("mt_db",mt_db)
 logger.info("初始化:注册多表单数据库到对象管理器完成")
+
+################### 初始化Sql 数据库 ###################
+
+from base.database.space import init_sql_engine
+logger.info("初始化:主sql数据库引擎初始化")
+sql_db = None
+sql_base_class = None
+try:
+    sql_db = init_sql_engine()
+    logger.info("初始化:主sql数据库引擎创建成功")
+    om.store("sql_db",sql_db)
+    logger.info("初始化:注册主sql数据库引擎到对象管理器完成")
+    sql_base_class = get_sql_base_class()
+    om.store("sql_base_class",sql_base_class)
+    logger.info("初始化:表基类注册到对象管理器完成")
+    create_all_tables(sql_db)
+    logger.info("创建所有表成功")
+except:
+    logger.info("初始化:注册主sql数据库引擎到对象管理器失败")
+
+
+
