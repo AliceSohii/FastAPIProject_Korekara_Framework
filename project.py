@@ -76,18 +76,20 @@ try:
     main_sql_session = get_main_sql_session()
     om.store("sql_db",main_sql_session)
     logger.info("初始化:获取数据库主对话对象到对象管理器完成")
-    logger.info("初始化:连接Redis")
-    r = create_redis_client()
-    if r is None:
-        redis_db = r
-        om.store("redis_db",redis_db )
-        logger.info("初始化:获取Redis对话对象到对象管理器完成")
-    else:
-        logger.info("初始化:未配置Redis")
+
 except:
     logger.info("初始化:注册主sql数据库引擎到对象管理器失败")
 
 
+##################连接Redis========================
+logger.info("初始化:连接Redis")
+r = create_redis_client()
+if r is None:
+    redis_db = r
+    om.store("redis_db",redis_db )
+    logger.info("初始化:获取Redis对话对象到对象管理器完成")
+else:
+    logger.info("初始化:未配置Redis")
 
 ################### 插件 plugins ###################
 logger.info("初始化:插件加载")
