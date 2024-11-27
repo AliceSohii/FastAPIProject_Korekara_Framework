@@ -104,6 +104,8 @@ for plugin in plugins_list:
 logger.info("初始化:插件加载完成")
 
 
+print(om.get_list())
+
 
 
 

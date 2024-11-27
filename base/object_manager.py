@@ -61,6 +61,13 @@ class ObjectManager:
         matches = [value for value in self._objects.values() if isinstance(value, obj_type)]
         return tuple(matches)
 
+    def get_list(self):
+        """
+        返回所有对象的键。
+
+        :return: 包含所有键的列表
+        """
+        return list(self._objects.keys())
 
 if __name__ == "__main__":
     # 使用示例
