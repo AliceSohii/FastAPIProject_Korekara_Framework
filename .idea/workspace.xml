@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8aecf856-b57a-4faf-9cbf-50d70ec054de" name="Changes" comment="添加ORM引擎适配">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/29178.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/29178.xml" afterDir="false" />
+    <list default="true" id="8aecf856-b57a-4faf-9cbf-50d70ec054de" name="Changes" comment="添加数据库主对话">
+      <change afterPath="$PROJECT_DIR$/base/database/redis_db/redis_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/base/database/space.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/database/space.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base/database/sql/sql_db_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/database/sql/sql_db_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/object_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/object_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/project.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -256,7 +257,7 @@
       <workItem from="1732364205210" duration="8298000" />
       <workItem from="1732408083912" duration="12802000" />
       <workItem from="1732632259590" duration="9663000" />
-      <workItem from="1732718668478" duration="1925000" />
+      <workItem from="1732718668478" duration="5340000" />
     </task>
     <task id="LOCAL-00001" summary="Changes">
       <option name="closed" value="true" />
@@ -362,7 +363,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732642276435</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="添加数据库主对话">
+      <option name="closed" value="true" />
+      <created>1732720998974</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1732720998974</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,10 +400,11 @@
     <MESSAGE value="完善多表DB" />
     <MESSAGE value="添加多个插件样本" />
     <MESSAGE value="添加ORM引擎适配" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加ORM引擎适配" />
+    <MESSAGE value="添加数据库主对话" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加数据库主对话" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FastAPIProject$FastAPIProject.coverage" NAME="FastAPIProject 覆盖结果" MODIFIED="1732720559089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/FastAPIProject$FastAPIProject.coverage" NAME="FastAPIProject 覆盖结果" MODIFIED="1732724165127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/FastAPIProject$log.coverage" NAME="log 覆盖结果" MODIFIED="1732207400750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base" />
     <SUITE FILE_PATH="coverage/FastAPIProject$thread.coverage" NAME="thread 覆盖结果" MODIFIED="1732331935345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base" />
     <SUITE FILE_PATH="coverage/FastAPIProject$SimpleDatabaseWithPersistence.coverage" NAME="simple_db 覆盖结果" MODIFIED="1732413536254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/base/database" />

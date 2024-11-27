@@ -1,6 +1,6 @@
 import atexit
 
-from base.database.space import get_main_sql_session
+from base.database.space import get_main_sql_session, create_redis_client
 from base.object_manager import ObjectManager
 from base.logger import logger
 
@@ -61,6 +61,7 @@ logger.info("初始化:主sql数据库引擎初始化")
 sql_db = None
 sql_base_class = None
 main_sql_session = None
+redis_db = None
 try:
     sql_db = init_sql_engine()
     logger.info("初始化:主sql数据库引擎创建成功")
@@ -75,6 +76,14 @@ try:
     main_sql_session = get_main_sql_session()
     om.store("sql_db",main_sql_session)
     logger.info("初始化:获取数据库主对话对象到对象管理器完成")
+    logger.info("初始化:连接Redis")
+    r = create_redis_client()
+    if r is None:
+        redis_db = r
+        om.store("redis_db",redis_db )
+        logger.info("初始化:获取Redis对话对象到对象管理器完成")
+    else:
+        logger.info("初始化:未配置Redis")
 except:
     logger.info("初始化:注册主sql数据库引擎到对象管理器失败")
 

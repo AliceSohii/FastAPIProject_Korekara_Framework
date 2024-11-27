@@ -2,6 +2,7 @@ class ObjectManager:
     def __init__(self):
         self._objects = {}  # 使用字典来存储对象
 
+
     def store(self, key: str, value):
         """
         存储对象。对象可以是任意类型的数据，但不能为空。

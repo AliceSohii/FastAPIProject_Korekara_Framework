@@ -90,3 +90,9 @@ def create_all_tables(_sql_db: Engine):
     # 创建所有表
     sql_base_class.metadata.create_all(_sql_db)
     logger.debug("Tables created")
+redis_db = None
+def create_redis_client():
+    from base.database.redis_db.redis_db import create_redis_client as _create_redis_client
+    global redis_db
+    redis_db =_create_redis_client(config)
+    return redis_db
