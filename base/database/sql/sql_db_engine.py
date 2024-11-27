@@ -4,10 +4,12 @@ from sqlalchemy import create_engine, Column, Integer, String, Sequence, Engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from project import logger
+
 sql_engine = None
+mian_sql_session = None
 def create_sql_engine(config: configparser.ConfigParser) ->  Engine:
     # 获取数据库类型
+    from project import logger
     db_type = config['sql_db']['type']
     logger.info(f"主数据库类型: {db_type}")
     echo = config['sql_db'].getboolean('echo')  # 读取echo配置，并转换为布尔值
@@ -29,15 +31,26 @@ def create_sql_engine(config: configparser.ConfigParser) ->  Engine:
         # 构建 MySQL 连接字符串
         connection_string = f'mysql+pymysql://{username}:{password}@{hostname}/{dbname}'
     else:
+
         logger.error(f"主数据库: 连接失败 "+ f"Unsupported database type: {db_type}")
         raise ValueError(f"Unsupported database type: {db_type}")
     logger.info(f"主数据库: 连接成功")
     # 创建数据库引擎
     global sql_engine
     sql_engine = create_engine(connection_string, echo=echo)
+    #在引擎创建之时，主会话也开始连接
+    global mian_sql_session
+    mian_sql_session = sessionmaker(bind=sql_engine)
     return sql_engine
 
 def get_sql_engine():
     global sql_engine
     return sql_engine
 
+
+def get_main_sql_session() :
+    global mian_sql_session
+    if mian_sql_session is None:
+        mian_sql_session = sessionmaker(bind=sql_engine)
+        return mian_sql_session
+    return mian_sql_session

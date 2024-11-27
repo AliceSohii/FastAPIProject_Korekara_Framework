@@ -4,7 +4,6 @@ import os
 
 from sqlalchemy import Engine
 from sqlalchemy.orm import declarative_base
-from project import logger
 
 CONFIG_FILE = os.path.join("config/database.ini")
 
@@ -21,15 +20,18 @@ simple_db_dir_path = config['mul_table_db']['mul_table_db_dir_path']
 
 mt_db = simple_mul_tab_db = MultiTableDB(simple_db_dir_path)
 
-
+from base.database.sql.sql_db_engine import get_main_sql_session
 sql_db = None
+main_sql_session =None
 def init_sql_engine():
     from base.database.sql.sql_db_engine import create_sql_engine
     global sql_db
     sql_db = create_sql_engine(config)
+
+    global main_sql_session
+    main_sql_session = get_main_sql_session()
     return sql_db
 #数据库基类
-
 
 
 
@@ -60,6 +62,7 @@ def snake_to_camel(snake_str):
 def create_all_tables(_sql_db: Engine):
     # 假设你的表文件都放在 'base/database/sql/tables/' 目录下
     tables_dir = 'base/database/sql/tables'
+    from project import logger
 
     # 获取该目录下的所有文件
     for filename in os.listdir(tables_dir):
@@ -73,16 +76,16 @@ def create_all_tables(_sql_db: Engine):
             # 动态导入模块
             module_name = f'{tables_dir.replace("/", ".")}.{base_name}'
             spec = importlib.util.find_spec(module_name)
-            if spec is not None:
-                module = importlib.util.module_from_spec(spec)
-                spec.loader.exec_module(module)
-
-                # 尝试从模块中获取类
-                try:
-                    table_class = getattr(module, class_name)
-                    # 这里不需要额外操作，因为create_all会处理所有已注册的表类
-                except AttributeError:
-                    logger.warning(f"No class {class_name} found in module {module_name}")
+            # if spec is not None:
+            #     module = importlib.util.module_from_spec(spec)
+            #     spec.loader.exec_module(module)
+            #
+            #     # 尝试从模块中获取类
+            #     try:
+            #         table_class = getattr(module, class_name)
+            #         # 这里不需要额外操作，因为create_all会处理所有已注册的表类
+            #     except AttributeError:
+            #         logger.warning(f"No class {class_name} found in module {module_name}")
 
     # 创建所有表
     sql_base_class.metadata.create_all(_sql_db)
