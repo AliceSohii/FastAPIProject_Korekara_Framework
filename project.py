@@ -17,6 +17,14 @@ logger.info("初始化:实例化全局对象管理器om完成")
 om.store("logger",logger)
 logger.info("初始化:注册日志器到om完成")
 
+##################事件管理器====================
+logger.info("初始化:创建事件管理器ev" )
+from base.event import EventManager
+logger.info(f"初始化:创建事件管理器ev完成")
+ev = EventManager()
+om.store("ev",ev)
+logger.info(f"初始化:注册事件管理器ev到对象管理器om完成")
+
 ################# 线程池 tp ###################
 logger.info("初始化:创建线程池" )
 from base.thread import tp,pool_size
