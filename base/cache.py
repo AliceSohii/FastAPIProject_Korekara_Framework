@@ -1,14 +1,15 @@
-import configparser
-import os
+# import configparser
+# import os
 import threading
 from collections import OrderedDict
 
+from project import config
 
-CONFIG_FILE = os.path.join("config/cache.ini")
-
-# 解析配置文件
-config = configparser.ConfigParser()
-config.read(CONFIG_FILE)
+# CONFIG_FILE = os.path.join("config/cache.ini")
+#
+# # 解析配置文件
+# config = configparser.ConfigParser()
+# config.read(CONFIG_FILE)
 
 # 获取配置值
 maximum_of_results_cached = int(config['cache']['maximum_of_results_cached'])

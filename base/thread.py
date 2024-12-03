@@ -8,13 +8,13 @@ from functools import wraps
 from threading import Lock
 
 from project import logger
-# # 配置文件路径
-CONFIG_FILE = os.path.join("config/thread.ini")
-
-# 解析配置文件
-config = configparser.ConfigParser()
-config.read(CONFIG_FILE)
-
+# # # 配置文件路径
+# CONFIG_FILE = os.path.join("config/thread.ini")
+#
+# # 解析配置文件
+# config = configparser.ConfigParser()
+# config.read(CONFIG_FILE)
+from project import config
 # 获取配置值
 not_used_cpu_num = int(config['thread']['thread_pool_not_used_cpu_num'])
 used_cpu_percentage = float(config['thread']['thread_pool_used_cpu_percentage'])

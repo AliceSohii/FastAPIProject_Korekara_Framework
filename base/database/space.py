@@ -5,12 +5,12 @@ import os
 from sqlalchemy import Engine
 from sqlalchemy.orm import declarative_base
 
-CONFIG_FILE = os.path.join("config/database.ini")
-
-# 解析配置文件
-config = configparser.ConfigParser()
-config.read(CONFIG_FILE)
-
+# CONFIG_FILE = os.path.join("config/database.ini")
+#
+# # 解析配置文件
+# config = configparser.ConfigParser()
+# config.read(CONFIG_FILE)
+from project import config
 # 获取配置值
 from base.database.table_db import MultiTableDB
 

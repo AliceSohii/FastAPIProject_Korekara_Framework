@@ -7,10 +7,11 @@ from configparser import ConfigParser
 import os
 
 # 读取配置文件
-config = ConfigParser()
-config.encoding = 'utf-8'
-config.read("config/log.ini")
+# config = ConfigParser()
+# config.encoding = 'utf-8'
+# config.read("config/log.ini")
 
+from project import config
 # 获取配置信息
 logger_dir_path = config['logger']['logger_dir_path']
 log_to_console = config['logger']['log_to_console'].strip().lower() == 'true'

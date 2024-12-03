@@ -1,5 +1,7 @@
 import atexit
 
+from base.confi import config
+
 from base.database.space import get_main_sql_session, create_redis_client
 from base.object_manager import ObjectManager
 from base.logger import logger
@@ -16,8 +18,13 @@ logger.info("初始化:实例化全局对象管理器om完成")
 
 om.store("logger",logger)
 logger.info("初始化:注册日志器到om完成")
-
-##################事件管理器====================
+# ##################配置 config ====================
+# logger.info("初始化:实例化配置文件读取器 config")
+# from base.confi import config
+# logger.info("初始化:实例化配置文件读取器 config 成功")
+om.store("config",config)
+logger.info("初始化:注册配置文件读取器 config 到 om 成功")
+##################事件管理器 ev ====================
 logger.info("初始化:创建事件管理器ev" )
 from base.event import EventManager
 logger.info(f"初始化:创建事件管理器ev完成")
