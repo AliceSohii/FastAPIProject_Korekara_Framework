@@ -1,4 +1,4 @@
-# Korekara Project Falsework
+# Korekara Project Framework
 
 ### v 0.0.1
 

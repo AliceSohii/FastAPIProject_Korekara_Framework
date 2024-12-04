@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8aecf856-b57a-4faf-9cbf-50d70ec054de" name="Changes" comment="添加事件接受和通知装饰器">
-      <change afterPath="$PROJECT_DIR$/serve/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/serve/serve.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tool/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tool/tool.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="8aecf856-b57a-4faf-9cbf-50d70ec054de" name="Changes" comment="完善tool和serve的加载逻辑">
       <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/project.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +256,7 @@
       <workItem from="1732632259590" duration="9663000" />
       <workItem from="1732718668478" duration="6343000" />
       <workItem from="1733226361675" duration="5025000" />
-      <workItem from="1733312794754" duration="6060000" />
+      <workItem from="1733312794754" duration="6549000" />
     </task>
     <task id="LOCAL-00001" summary="Changes">
       <option name="closed" value="true" />
@@ -457,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733316218265</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="完善tool和serve的加载逻辑">
+      <option name="closed" value="true" />
+      <created>1733324391852</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1733324391852</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -493,7 +494,8 @@
     <MESSAGE value="統一配置文件，使用config.py&#10;進行控制" />
     <MESSAGE value="添加日志装饰器" />
     <MESSAGE value="添加事件接受和通知装饰器" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加事件接受和通知装饰器" />
+    <MESSAGE value="完善tool和serve的加载逻辑" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善tool和serve的加载逻辑" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FastAPIProject$FastAPIProject.coverage" NAME="FastAPIProject 覆盖结果" MODIFIED="1733324343605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
