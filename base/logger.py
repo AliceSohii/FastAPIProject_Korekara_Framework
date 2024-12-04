@@ -3,13 +3,14 @@
 from loguru import logger as loguru_logger
 import sys
 from pathlib import Path
-from configparser import ConfigParser
+#from configparser import ConfigParser
 import os
-
+from functools import wraps
 # 读取配置文件
 # config = ConfigParser()
 # config.encoding = 'utf-8'
 # config.read("config/log.ini")
+#已经统一使用project.config获取配置
 
 from project import config
 # 获取配置信息
@@ -57,6 +58,48 @@ if log_to_console:
     loguru_logger.add(sys.stdout,
                       format="{time:YYYY-MM-DD HH:mm:ss} - {level} - {message}",
                       level=log_level)
+
+
+def log_decorator(_log_level):
+    """
+    创建一个装饰器，用于在被装饰的函数调用时记录日志。
+
+    参数:
+    log_level (str): 要记录的日志等级（'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'）。
+
+    返回:
+    function: 一个装饰了日志记录功能的函数。
+    """
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            # 获取函数名和参数，用于日志记录
+            func_name = func.__name__
+            args_str = ', '.join([f"{k}={v}" for k, v in kwargs.items()]) if kwargs else ', '.join(map(str, args))
+
+            # 记录日志
+            if _log_level == "DEBUG":
+                logger.debug(f"Calling {func_name} with args: {args_str}")
+            elif _log_level == "INFO":
+                logger.info(f"Calling {func_name} with args: {args_str}")
+            elif _log_level == "WARNING":
+                logger.warning(f"Calling {func_name} with args: {args_str}")
+            elif _log_level == "ERROR":
+                logger.error(f"Calling {func_name} with args: {args_str}")
+            elif _log_level == "CRITICAL":
+                logger.critical(f"Calling {func_name} with args: {args_str}")
+            else:
+                # 如果提供了无效的日志等级，记录一个错误日志
+                logger.error(f"Invalid log level '{_log_level}' for function {func_name}")
+
+            # 调用原始函数并返回结果
+            result = func(*args, **kwargs)
+            return result
+
+        return wrapper
+
+    return decorator
+
 
 # 提供一个全局的 logger 实例，供项目中的其他模块使用。
 # 由于 loguru 是单例的，理论上我们不需要这样做，但为了兼容和减少改动，我们还是提供一个。
