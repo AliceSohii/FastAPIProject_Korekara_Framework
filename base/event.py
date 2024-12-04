@@ -1,3 +1,4 @@
+import functools
 import weakref
 from typing import List, Callable, Dict, Any
 
@@ -218,6 +219,70 @@ class EventManager:
         """
         return self.tag_trie.list_all_keys()
 
+    def register_event(self, event_name: str):
+        """
+        register_event 和 register_tagged_event 不能连续使用
+
+        :param event_name: 事件名称
+        """
+
+        def decorator(handler):
+            @functools.wraps(handler)
+            def wrapper(*args, **kwargs):
+                return handler(*args, **kwargs)
+
+            self.register(event_name, wrapper)
+            return wrapper
+
+        return decorator
+
+    def register_tagged_event(self, tag: str):
+        """
+        register_event 和 register_tagged_event 不能连续使用
+        装饰器，将函数注册为标签事件处理器。
+
+        :param tag: 标签名称
+        """
+
+        def decorator(handler):
+            @functools.wraps(handler)
+            def wrapper(*args, **kwargs):
+                return handler(*args, **kwargs)
+
+            self.register_tagged(tag, wrapper)
+            return wrapper
+
+        return decorator
+
+    def emit_with_result(self, event_name: str):
+        """
+        这是一个装饰器工厂函数，它接受一个事件名并返回一个装饰器。
+        """
+
+        def decorator(func):
+            def wrapper(self, *args, **kwargs):
+                result = func(self, *args, **kwargs)
+                self.emit(event_name, result)  # 使用指定的事件名触发事件并传递结果
+                return result
+
+            return wrapper
+
+        return decorator
+
+    def emit_tag_with_result(self, tag_name: str):
+        """
+        这是一个装饰器工厂函数，它接受一个标签名并返回一个装饰器。
+        """
+
+        def decorator(func):
+            def wrapper(self, *args, **kwargs):
+                result = func(self, *args, **kwargs)
+                self.emit_tagged(tag_name, result)  # 使用指定的标签名触发标签事件并传递结果
+                return result
+
+            return wrapper
+
+        return decorator
 
 # 示例使用：
 
