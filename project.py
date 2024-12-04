@@ -118,8 +118,14 @@ for plugin in plugins_list:
 
 logger.info("初始化:插件加载完成")
 
+logger.info("初始化:工具")
+import tool
 
-print(om.get_list())
+logger.info("初始化:服务")
+import serve
+
+
+# print(om.get_list())
 
 
 

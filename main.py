@@ -1,6 +1,8 @@
 from fastapi import FastAPI
-from project import om
 from project import logger
+from project import om
+
+
 
 logger.info("初始化:实例化FastApi中")
 app = FastAPI()
